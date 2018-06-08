@@ -12,10 +12,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
-app.listen(process.env.PORT || 9000);
+app.listen(process.env.PORT || 9000, () => {
+    console.log("app running on port 9000");
+});
+
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+})
 
 app.get('/home', (req, res) => {
-    res.render('index');
+    res.render('home');
 });
 
 app.get('/blog', (req, res) => {
@@ -27,8 +33,6 @@ app.get('/contact', (req, res) => {
 });
 
 app.post('/contact', (req, res) => {
-
-    // console.log(req.body);
     var subject = req.body.subject;
     var email = req.body.email;
     var message = req.body.message;
