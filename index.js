@@ -17,7 +17,8 @@ app.listen(process.env.PORT || 9000, () => {
 });
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+    // console.log(__dirname + "/index.html");
+    // res.sendFile(__dirname + '/index.html');
 })
 
 app.get('/home', (req, res) => {
